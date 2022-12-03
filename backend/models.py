@@ -10,3 +10,10 @@ class Trail(models.Model):
     difficulty = models.IntegerField(null=False)
     photo_url = models.CharField(max_length=2048, blank=True)
     map_url = models.CharField(max_length=2048, blank=True)
+
+class TrailComment(models.Model):
+    id = models.AutoField(primary_key=True)
+    # author_id = models.ForeignKey("User", on_delete=models.CASCADE)
+    trail_id = models.ForeignKey("Trail", on_delete=models.CASCADE)
+    comment = models.TextField(max_length=10000, blank=False)
+    date = models.DateField(null=False)

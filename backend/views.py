@@ -33,7 +33,7 @@ def TrailList (request):
             return JsonResponse(Serializer.data, status=status.HTTP_201_CREATED) 
         return JsonResponse(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['GET'])
+@api_view(['GET', 'PUT'])
 def TrailDetail (request, pk):
     try:
         TrailData = Trail.objects.filter(id=pk)
@@ -43,3 +43,12 @@ def TrailDetail (request, pk):
     if request.method == 'GET':
         Serializer = TrailSerializer(TrailData, many=True)
         return JsonResponse(Serializer.data, safe=False)
+    
+    elif request.method == 'PUT':
+        OldTrailData = Trail.objects.get(id=pk)
+        NewTrailData = JSONParser().parse(request)
+        Serializer = TrailSerializer(OldTrailData, data=NewTrailData)
+        if Serializer.is_valid():
+            Serializer.save()
+            return JsonResponse(Serializer.data)
+        return JsonResponse(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)

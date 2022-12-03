@@ -28,5 +28,7 @@ urlpatterns = [
     path('', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework')),
     path('api/trail', views.TrailList, name='trail_list'),
-    path('api/trail/<int:pk>', views.TrailDetail, name='trail_detail')
+    path('api/trail/<int:pk>', views.TrailDetail, name='trail_detail'),
+    path('api/trailcomment', views.TrailCommentList, name='trailcomment_list'),
+    path('api/trailcomment/<int:pk>', views.TrailCommentDetail, name='trailcomment_detail'),
 ]

@@ -1,4 +1,4 @@
 from django.contrib import admin
-from .models import SingleTrail
+from .models import Trail
 
-admin.site.register(SingleTrail)
+admin.site.register(Trail)

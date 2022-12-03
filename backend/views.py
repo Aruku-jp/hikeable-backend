@@ -71,3 +71,14 @@ def TrailCommentList (request):
             Serializer.save()
             return JsonResponse(Serializer.data, status=status.HTTP_201_CREATED) 
         return JsonResponse(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET'])
+def TrailCommentDetail (request, pk):
+    try:
+        TrailCommentData = TrailComment.objects.filter(trail_id=pk)
+    except TrailComment.DoesNotExist:
+        return JsonResponse({'message': 'The listing does not exist'}, status=status.HTTP_404_NOT_FOUND)
+    
+    if request.method == 'GET':
+        Serializer = TrailCommentSerializer(TrailCommentData, many=True)
+        return JsonResponse(Serializer.data, safe=False)

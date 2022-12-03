@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User, Group
-from .models import Trail
-from backend.serializers import UserSerializer, GroupSerializer, TrailSerializer
+from .models import Trail, TrailComment
+from backend.serializers import UserSerializer, GroupSerializer, TrailSerializer, TrailCommentSerializer
 
 from rest_framework import viewsets, permissions, status
 from rest_framework.decorators import api_view
@@ -56,3 +56,10 @@ def TrailDetail (request, pk):
     elif request.method == 'DELETE':
         TrailData.delete()
         return JsonResponse({'message': 'The listing was successfully deleted'}, status=status.HTTP_204_NO_CONTENT)
+
+@api_view(['GET'])
+def TrailCommentList (request):
+    if request.method == 'GET':
+        TrailCommentData = TrailComment.objects.all()
+        Serializer = TrailCommentSerializer(TrailCommentData, many=True)
+        return JsonResponse(Serializer.data, safe=False)

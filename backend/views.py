@@ -33,7 +33,7 @@ def TrailList (request):
             return JsonResponse(Serializer.data, status=status.HTTP_201_CREATED) 
         return JsonResponse(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
-@api_view(['GET', 'PUT'])
+@api_view(['GET', 'PUT', 'DELETE'])
 def TrailDetail (request, pk):
     try:
         TrailData = Trail.objects.filter(id=pk)
@@ -52,3 +52,7 @@ def TrailDetail (request, pk):
             Serializer.save()
             return JsonResponse(Serializer.data)
         return JsonResponse(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+    
+    elif request.method == 'DELETE':
+        TrailData.delete()
+        return JsonResponse({'message': 'The listing was successfully deleted'}, status=status.HTTP_204_NO_CONTENT)

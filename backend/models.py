@@ -1,4 +1,5 @@
 from django.db import models
+from django.contrib.auth.models import User
 
 class Trail(models.Model):
     id = models.AutoField(primary_key=True)
@@ -13,7 +14,16 @@ class Trail(models.Model):
 
 class TrailComment(models.Model):
     id = models.AutoField(primary_key=True)
-    # author_id = models.ForeignKey("User", on_delete=models.CASCADE)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
     trail_id = models.ForeignKey("Trail", on_delete=models.CASCADE)
     comment = models.TextField(max_length=10000, blank=False)
     date = models.DateField(null=False)
+
+class Account (models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.OneToOneField(User, on_delete=models.CASCADE)
+    email = models.EmailField(unique=True, null=False)
+    firebase_uid = models.CharField(max_length=128, unique=True)
+
+def __str__(self):
+    return self.user.username

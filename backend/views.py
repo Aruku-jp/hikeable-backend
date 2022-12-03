@@ -57,9 +57,17 @@ def TrailDetail (request, pk):
         TrailData.delete()
         return JsonResponse({'message': 'The listing was successfully deleted'}, status=status.HTTP_204_NO_CONTENT)
 
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 def TrailCommentList (request):
     if request.method == 'GET':
         TrailCommentData = TrailComment.objects.all()
         Serializer = TrailCommentSerializer(TrailCommentData, many=True)
         return JsonResponse(Serializer.data, safe=False)
+
+    elif request.method == 'POST':
+        TrailCommentData = JSONParser().parse(request)
+        Serializer = TrailCommentSerializer(data=TrailCommentData)
+        if Serializer.is_valid():
+            Serializer.save()
+            return JsonResponse(Serializer.data, status=status.HTTP_201_CREATED) 
+        return JsonResponse(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)

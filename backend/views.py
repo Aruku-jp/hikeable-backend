@@ -18,12 +18,20 @@ class GroupViewSet(viewsets.ModelViewSet):
     serializer_class = GroupSerializer
     permission_classes = [permissions.IsAuthenticated]
 
-@api_view(['GET'])
+@api_view(['GET', 'POST'])
 def TrailList (request):
     if request.method == 'GET':
         TrailData = Trail.objects.all()
         Serializer = TrailSerializer(TrailData, many=True)
         return JsonResponse(Serializer.data, safe=False)
+
+    elif request.method == 'POST':
+        TrailData = JSONParser().parse(request)
+        Serializer = TrailSerializer(data=TrailData)
+        if Serializer.is_valid():
+            Serializer.save()
+            return JsonResponse(Serializer.data, status=status.HTTP_201_CREATED) 
+        return JsonResponse(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 @api_view(['GET'])
 def TrailDetail (request, pk):

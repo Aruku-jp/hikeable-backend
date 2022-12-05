@@ -106,8 +106,8 @@ def TrailLikeList(request):
         return JsonResponse(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['GET', 'PUT'])
-def TrailLikeDetail(request, pk):
+@api_view(['GET'])
+def TrailLikeGet(request, pk):
     try:
         TrailLikeData = TrailLike.objects.filter(trail_id=pk)
     except TrailLike.DoesNotExist:
@@ -117,8 +117,10 @@ def TrailLikeDetail(request, pk):
         Serializer = TrailLikeSerializer(TrailLikeData, many=True)
         return JsonResponse(Serializer.data, safe=False)
 
-    elif request.method == 'PUT':
-        OldLikeData = Trail.objects.get(id=pk)
+@api_view(['PUT'])
+def TrailLikePut(request, pk):
+    if request.method == 'PUT':
+        OldLikeData = TrailLike.objects.get(id=pk)
         NewLikeData = JSONParser().parse(request)
         Serializer = TrailLikeSerializer(OldLikeData, data=NewLikeData)
         if Serializer.is_valid():

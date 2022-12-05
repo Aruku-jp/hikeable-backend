@@ -1,6 +1,6 @@
 from django.contrib.auth.models import User, Group
-from .models import Trail, TrailComment
-from backend.serializers import UserSerializer, GroupSerializer, TrailSerializer, TrailCommentSerializer
+from .models import *
+from backend.serializers import *
 
 from rest_framework import viewsets, permissions, status
 from rest_framework.decorators import api_view
@@ -81,4 +81,15 @@ def TrailCommentDetail (request, pk):
     
     if request.method == 'GET':
         Serializer = TrailCommentSerializer(TrailCommentData, many=True)
+        return JsonResponse(Serializer.data, safe=False)
+
+@api_view(['GET'])
+def TrailLikeDetail (request, pk):
+    try:
+        TrailLikeData = TrailLike.objects.filter(trail_id=pk)
+    except TrailLike.DoesNotExist:
+        return JsonResponse({'message': 'The listing does not exist'}, status=status.HTTP_404_NOT_FOUND)
+    
+    if request.method == 'GET':
+        Serializer = TrailLikeSerializer(TrailLikeData, many=True)
         return JsonResponse(Serializer.data, safe=False)

@@ -5,6 +5,7 @@ from .models import *
 
 admin.site.register(Trail)
 admin.site.register(TrailComment)
+admin.site.register(TrailLike)
 
 class AccountInline(admin.StackedInline):
     model = Account

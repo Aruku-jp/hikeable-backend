@@ -1,7 +1,7 @@
 from django.db import models
 from django.contrib.auth.models import User
 
-class Trail(models.Model):
+class Trail (models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(unique=True, null=False, max_length=255)
     prefecture = models.CharField(null=False, max_length=9)
@@ -12,7 +12,7 @@ class Trail(models.Model):
     photo_url = models.CharField(max_length=2048, blank=True)
     map_url = models.CharField(max_length=2048, blank=True)
 
-class TrailComment(models.Model):
+class TrailComment (models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     trail_id = models.ForeignKey("Trail", on_delete=models.CASCADE)
@@ -24,6 +24,12 @@ class Account (models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     email = models.EmailField(unique=True, null=False)
     firebase_uid = models.CharField(max_length=128, unique=True)
+
+class Like (models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    trail_id = models.ForeignKey("Trail", on_delete=models.CASCADE)
+    like = models.BooleanField(null=False)
 
 def __str__(self):
     return self.user.username

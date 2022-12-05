@@ -28,8 +28,10 @@ SECRET_KEY=config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG=config('DEBUG')
 
-ALLOWED_HOSTS = ['localhost', 'hikeable-backend.herokuapp.com', 'herokuapp.com']
+ALLOWED_HOSTS = ['http://localhost:3000', 'http://localhost:8000', 'hikeable-backend.herokuapp.com', 'herokuapp.com']
 
+CORS_ORIGIN_ALLOW_ALL = False
+CORS_ORIGIN_WHITELIST = ('http://localhost:3000', 'http://localhost:8000', 'https://hikeable-frontend.herokuapp.com', 'https://hikeable-frontend.vercel.app')
 
 # Application definition
 
@@ -42,9 +44,11 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'backend',
+    'corsheaders'
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',

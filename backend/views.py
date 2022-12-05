@@ -99,7 +99,7 @@ def TrailLikeList(request):
 
     elif request.method == 'POST':
         TrailLikeData = JSONParser().parse(request)
-        Serializer = TrailCommentSerializer(data=TrailLikeData)
+        Serializer = TrailLikeSerializer(data=TrailLikeData)
         if Serializer.is_valid():
             Serializer.save()
             return JsonResponse(Serializer.data, status=status.HTTP_201_CREATED)
@@ -120,7 +120,7 @@ def TrailLikeDetail(request, pk):
     elif request.method == 'PUT':
         OldLikeData = Trail.objects.get(id=pk)
         NewLikeData = JSONParser().parse(request)
-        Serializer = TrailSerializer(OldLikeData, data=NewLikeData)
+        Serializer = TrailLikeSerializer(OldLikeData, data=NewLikeData)
         if Serializer.is_valid():
             Serializer.save()
             return JsonResponse(Serializer.data)

@@ -31,5 +31,6 @@ urlpatterns = [
     path('api/trails/<int:pk>', views.TrailDetail, name='trail_detail'),
     path('api/trails/comments', views.TrailCommentList, name='trailcomment_list'),
     path('api/trails/<int:pk>/comments', views.TrailCommentDetail, name='trailcomment_detail'),
-    path('api/trails/<int:pk>/likes', views.TrailLikeDetail, name='traillike_detail')
+    path('api/trails/likes', views.TrailLikeList, name='traillike_list'),
+    path('api/trails/<int:pk>/likes', views.TrailLikeDetail, name='traillike_detail'),
 ]

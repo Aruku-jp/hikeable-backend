@@ -25,7 +25,7 @@ class Account (models.Model):
     email = models.EmailField(unique=True, null=False)
     firebase_uid = models.CharField(max_length=128, unique=True)
 
-class Like (models.Model):
+class TrailLike (models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     trail_id = models.ForeignKey("Trail", on_delete=models.CASCADE)

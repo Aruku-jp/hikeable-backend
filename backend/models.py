@@ -31,5 +31,12 @@ class TrailLike (models.Model):
     trail_id = models.ForeignKey("Trail", on_delete=models.CASCADE)
     like = models.BooleanField(null=False)
 
+class TrailCompletion (models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    trail_id = models.ForeignKey("Trail", on_delete=models.CASCADE)
+    completion = models.BooleanField(null=False)
+    date = models.DateField(null=False)
+
 def __str__(self):
     return self.user.username

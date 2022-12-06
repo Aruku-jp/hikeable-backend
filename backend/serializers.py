@@ -1,5 +1,5 @@
 from django.contrib.auth.models import User, Group
-from .models import Trail, TrailComment, TrailLike
+from .models import *
 from rest_framework import serializers
 from rest_framework.serializers import ModelSerializer
 
@@ -27,3 +27,8 @@ class TrailLikeSerializer(ModelSerializer):
     class Meta:
         model = TrailLike
         fields = ['id', 'user', 'trail_id', 'like']
+
+class TrailCompletionSerializer(ModelSerializer):
+    class Meta:
+        model = TrailCompletion
+        fields = ['id', 'user', 'trail_id', 'completion', 'date']

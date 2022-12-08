@@ -8,6 +8,11 @@ class UserSerializer(serializers.HyperlinkedModelSerializer):
         model = User
         fields = ['url', 'username', 'email', 'groups']
 
+class AccountSerializer(ModelSerializer):
+    class Meta:
+        model = Account
+        fields = ['id', 'user', 'firebase_uid', 'email']
+
 class GroupSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Group

@@ -175,12 +175,10 @@ def TrailCompletionPut(request, pk):
 @api_view(['POST'])
 def AccountAddIUD(request):
     if request.method == 'POST':
-        try:
-            NewUid = JSONParser().parse(request)
-            Serializer = UserSerializer(data=NewUid)
-            if Serializer.is_valid():
-                Serializer.save()
-                return JsonResponse(Serializer.data, status=status.HTTP_201_CREATED)
-        except IntegrityError:
-            return ("this uid already exists", NewUid)
-        return (NewUid)
+        NewUid = JSONParser().parse(request)
+        Serializer = AccountSerializer(data=NewUid)
+        print(NewUid)
+        if Serializer.is_valid():
+            Serializer.save()
+            return JsonResponse(Serializer.data, status=status.HTTP_201_CREATED)
+        return JsonResponse(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)

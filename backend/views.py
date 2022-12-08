@@ -188,9 +188,9 @@ def register(request):
 
 
 @api_view(['GET'])
-def get(request, pk):
+def get(request, uid: str):
     try:
-        User = Account.objects.filter(id=pk)
+        User = Account.objects.filter(firebase_uid=uid)
     except Account.DoesNotExist:
         return JsonResponse({'message': 'The listing does not exist'}, status=status.HTTP_404_NOT_FOUND)
 

@@ -36,5 +36,6 @@ urlpatterns = [
     path('api/trails/likes/<int:pk>', views.TrailLikePut, name='traillike_put'),
     path('api/trails/completions', views.TrailCompletionList, name='trailcompletion_list'),
     path('api/trails/<int:pk>/completions', views.TrailCompletionGet, name='trailcompletion_get'),
-    path('api/trails/completions/<int:pk>', views.TrailCompletionPut, name='trailcompletion_put')
+    path('api/trails/completions/<int:pk>', views.TrailCompletionPut, name='trailcompletion_put'),
+    path('api/user', views.AccountAddIUD, name='Account_post'),
 ]

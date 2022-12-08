@@ -169,3 +169,15 @@ def TrailCompletionPut(request, pk):
             Serializer.save()
             return JsonResponse(Serializer.data)
         return JsonResponse(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+
+@api_view(['POST'])
+def AccountAddIUD(request):
+    if request.method == 'POST':
+        UserUid = JSONParser().parse(request)
+        Serializer = UserSerializer(data=UserUid)
+        if Serializer.is_valid():
+            Serializer.save()
+            return JsonResponse(Serializer.data, status=status.HTTP_201_CREATED)
+        return JsonResponse(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -7,15 +7,4 @@ admin.site.register(Trail)
 admin.site.register(TrailComment)
 admin.site.register(TrailLike)
 admin.site.register(TrailCompletion)
-
-class AccountInline(admin.StackedInline):
-    model = Account
-    can_delete = False
-    verbose_name_plural = 'Accounts'
-
-class CustomizedUserAdmin (UserAdmin):
-    inlines = (AccountInline, )
-
-admin.site.unregister(User)
-admin.site.register(User, CustomizedUserAdmin)
 admin.site.register(Account)

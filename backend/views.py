@@ -7,7 +7,6 @@ from rest_framework.decorators import api_view
 
 from django.http.response import JsonResponse
 from rest_framework.parsers import JSONParser
-from django.db import IntegrityError
 
 
 class UserViewSet(viewsets.ModelViewSet):
@@ -173,11 +172,10 @@ def TrailCompletionPut(request, pk):
 
 
 @api_view(['POST'])
-def AccountAddIUD(request):
+def register(request):
     if request.method == 'POST':
-        NewUid = JSONParser().parse(request)
-        Serializer = AccountSerializer(data=NewUid)
-        print(NewUid)
+        User = JSONParser().parse(request)
+        Serializer = AccountSerializer(data=User)
         if Serializer.is_valid():
             Serializer.save()
             return JsonResponse(Serializer.data, status=status.HTTP_201_CREATED)

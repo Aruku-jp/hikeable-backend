@@ -38,4 +38,5 @@ urlpatterns = [
     path('api/trails/<int:pk>/completions', views.TrailCompletionGet, name='trailcompletion_get'),
     path('api/trails/completions/<int:pk>', views.TrailCompletionPut, name='trailcompletion_put'),
     path('api/users', views.register, name='account_post'),
+    path('api/users/<int:pk>', views.get, name='account_get')
 ]

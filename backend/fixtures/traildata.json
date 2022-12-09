@@ -1,0 +1,171 @@
+[
+  {
+    "model": "backend.Trail",
+    "pk": 1,
+    "fields": {
+      "name": "Mount Takao",
+      "prefecture": "tokyo",
+      "latitude": 35.6254,
+      "longitude": 139.2437,
+      "length": 3.8,
+      "difficulty": 1,
+      "photo_url": "https://unsplash.com/ja/%E5%86%99%E7%9C%9F/uQV3HAxibKI",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 2,
+    "fields": {
+      "name": "Mount Nokogiri",
+      "prefecture": "kanagawa",
+      "latitude": 35.1603,
+      "longitude": 139.8408,
+      "length": 10,
+      "difficulty": 1,
+      "photo_url": "https://unsplash.com/ja/%E5%86%99%E7%9C%9F/uQV3HAxibKI",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 3,
+    "fields": {
+      "name": "Mount Mitou",
+      "prefecture": "tokyo",
+      "latitude": 35.7387,
+      "longitude": 139.0141,
+      "length": 10,
+      "difficulty": 2,
+      "photo_url": "https://unsplash.com/ja/%E5%86%99%E7%9C%9F/uQV3HAxibKI",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 4,
+    "fields": {
+      "name": "Mount Jimba",
+      "prefecture": "tokyo",
+      "latitude": 35.6521,
+      "longitude": 139.1665,
+      "length": 10,
+      "difficulty": 2,
+      "photo_url": "https://unsplash.com/ja/%E5%86%99%E7%9C%9F/uQV3HAxibKI",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 5,
+    "fields": {
+      "name": "Mount Takatori",
+      "prefecture": "kanagawa",
+      "latitude": 35.3066,
+      "longitude": 139.6122,
+      "length": 5,
+      "difficulty": 1,
+      "photo_url": "https://unsplash.com/ja/%E5%86%99%E7%9C%9F/uQV3HAxibKI",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 6,
+    "fields": {
+      "name": "Mount Hiwada",
+      "prefecture": "saitama",
+      "latitude": 35.8939,
+      "longitude": 139.3049,
+      "length": 8,
+      "difficulty": 1,
+      "photo_url": "https://unsplash.com/ja/%E5%86%99%E7%9C%9F/uQV3HAxibKI",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 7,
+    "fields": {
+      "name": "Mount Mitake",
+      "prefecture": "tokyo",
+      "latitude": 35.8823,
+      "longitude": 137.4485,
+      "length": 12,
+      "difficulty": 3,
+      "photo_url": "https://unsplash.com/ja/%E5%86%99%E7%9C%9F/uQV3HAxibKI",
+      "map_url": ""
+    }
+  },
+
+  {
+    "model": "backend.Trail",
+    "pk": 8,
+    "fields": {
+      "name": "Mount Tsurugi",
+      "prefecture": "toyama",
+      "latitude": 36.6235,
+      "longitude": 137.6174,
+      "length": 15,
+      "difficulty": 3,
+      "photo_url": "https://unsplash.com/ja/%E5%86%99%E7%9C%9F/uQV3HAxibKI",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 9,
+    "fields": {
+      "name": "Mount Fuji",
+      "prefecture": "yamanashi",
+      "latitude": 35.3606,
+      "longitude": 138.7274,
+      "length": 15,
+      "difficulty": 3,
+      "photo_url": "https://unsplash.com/ja/%E5%86%99%E7%9C%9F/uQV3HAxibKI",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 10,
+    "fields": {
+      "name": "Mount Tsukuba",
+      "prefecture": "ibaraki",
+      "latitude": 36.2254,
+      "longitude": 140.1075,
+      "length": 7,
+      "difficulty": 2,
+      "photo_url": "https://unsplash.com/ja/%E5%86%99%E7%9C%9F/uQV3HAxibKI",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 11,
+    "fields": {
+      "name": "Mount Tanzawa",
+      "prefecture": "kanagawa",
+      "latitude": 35.4745,
+      "longitude": 139.1628,
+      "length": 18,
+      "difficulty": 3,
+      "photo_url": "https://unsplash.com/ja/%E5%86%99%E7%9C%9F/uQV3HAxibKI",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 12,
+    "fields": {
+      "name": "Mount Oyama",
+      "prefecture": "kanagawa",
+      "latitude": 35.4414,
+      "longitude": 139.2311,
+      "length": 8,
+      "difficulty": 3,
+      "photo_url": "https://unsplash.com/ja/%E5%86%99%E7%9C%9F/uQV3HAxibKI",
+      "map_url": ""
+    }
+  }
+]

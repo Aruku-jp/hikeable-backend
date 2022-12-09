@@ -4,6 +4,6 @@ from .models import *
 admin.site.register(Trail)
 admin.site.register(TrailComment)
 admin.site.register(TrailLike)
-admin.site.register(TrailMessages)
+admin.site.register(TrailMessage)
 admin.site.register(TrailCompletion)
 admin.site.register(Account)

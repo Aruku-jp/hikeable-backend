@@ -1,16 +1,19 @@
 from django.db import models
 from django.contrib.auth.models import User
 
+
 class Trail (models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(unique=True, null=False, max_length=255)
     prefecture = models.CharField(null=False, max_length=9)
     latitude = models.DecimalField(null=False, max_digits=12, decimal_places=8)
-    longitude = models.DecimalField(null=False, max_digits=13, decimal_places=8)
+    longitude = models.DecimalField(
+        null=False, max_digits=13, decimal_places=8)
     length = models.DecimalField(max_digits=5, decimal_places=2, null=False)
     difficulty = models.IntegerField(null=False)
     photo_url = models.CharField(max_length=2048, blank=True)
     map_url = models.CharField(max_length=2048, blank=True)
+
 
 class TrailComment (models.Model):
     id = models.AutoField(primary_key=True)
@@ -19,17 +22,32 @@ class TrailComment (models.Model):
     comment = models.TextField(max_length=10000, blank=False)
     date = models.DateField(null=False)
 
+
 class Account (models.Model):
     id = models.AutoField(primary_key=True)
     user = models.OneToOneField(User, on_delete=models.CASCADE)
     email = models.EmailField(unique=True, null=False)
     firebase_uid = models.CharField(max_length=128, unique=True)
 
+
 class TrailLike (models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
     trail_id = models.ForeignKey("Trail", on_delete=models.CASCADE)
     like = models.BooleanField(null=False)
+
+
+class TrailMessages (models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey("Account", on_delete=models.CASCADE)
+    latitude = models.DecimalField(null=False, max_digits=12, decimal_places=8)
+    longitude = models.DecimalField(
+        null=False, max_digits=13, decimal_places=8)
+    message = models.TextField(null=False)
+    likes = models.IntegerField(blank=True)
+    dislikes = models.IntegerField(blank=True)
+    date = models.DateField(null=False)
+
 
 def __str__(self):
     return self.user.username

@@ -1,5 +1,5 @@
 from django.db import models
-from django.contrib.auth.models import User
+
 
 
 class Trail (models.Model):
@@ -17,7 +17,7 @@ class Trail (models.Model):
 
 class TrailComment (models.Model):
     id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey("Account", on_delete=models.CASCADE)
     trail_id = models.ForeignKey("Trail", on_delete=models.CASCADE)
     comment = models.TextField(max_length=10000, blank=False)
     date = models.DateField(null=False)
@@ -25,16 +25,22 @@ class TrailComment (models.Model):
 
 class Account (models.Model):
     id = models.AutoField(primary_key=True)
-    user = models.OneToOneField(User, on_delete=models.CASCADE)
-    email = models.EmailField(unique=True, null=False)
     firebase_uid = models.CharField(max_length=128, unique=True)
 
 
 class TrailLike (models.Model):
     id = models.AutoField(primary_key=True)
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey("Account", on_delete=models.CASCADE)
     trail_id = models.ForeignKey("Trail", on_delete=models.CASCADE)
     like = models.BooleanField(null=False)
+
+
+class TrailCompletion (models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey("Account", on_delete=models.CASCADE)
+    trail_id = models.ForeignKey("Trail", on_delete=models.CASCADE)
+    completion = models.BooleanField(null=False)
+    date = models.DateField(null=False)
 
 
 class TrailMessages (models.Model):

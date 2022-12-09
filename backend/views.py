@@ -106,8 +106,8 @@ def TrailLikeList(request):
         return JsonResponse(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)
 
 
-@api_view(['GET', 'PUT'])
-def TrailLikeDetail(request, pk):
+@api_view(['GET'])
+def TrailLikeGet(request, pk):
     try:
         TrailLikeData = TrailLike.objects.filter(trail_id=pk)
     except TrailLike.DoesNotExist:
@@ -117,11 +117,83 @@ def TrailLikeDetail(request, pk):
         Serializer = TrailLikeSerializer(TrailLikeData, many=True)
         return JsonResponse(Serializer.data, safe=False)
 
-    elif request.method == 'PUT':
-        OldLikeData = Trail.objects.get(id=pk)
+
+@api_view(['PUT'])
+def TrailLikePut(request, pk):
+    if request.method == 'PUT':
+        OldLikeData = TrailLike.objects.get(id=pk)
         NewLikeData = JSONParser().parse(request)
         Serializer = TrailLikeSerializer(OldLikeData, data=NewLikeData)
         if Serializer.is_valid():
             Serializer.save()
             return JsonResponse(Serializer.data)
         return JsonResponse(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET', 'POST'])
+def TrailCompletionList(request):
+    if request.method == 'GET':
+        TrailCompletionData = TrailCompletion.objects.all()
+        Serializer = TrailCompletionSerializer(TrailCompletionData, many=True)
+        return JsonResponse(Serializer.data, safe=False)
+
+    elif request.method == 'POST':
+        TrailCompletionData = JSONParser().parse(request)
+        Serializer = TrailCompletionSerializer(data=TrailCompletionData)
+        if Serializer.is_valid():
+            Serializer.save()
+            return JsonResponse(Serializer.data, status=status.HTTP_201_CREATED)
+        return JsonResponse(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+def TrailCompletionGet(request, pk):
+    try:
+        TrailCompletionData = TrailCompletion.objects.filter(trail_id=pk)
+    except TrailLike.DoesNotExist:
+        return JsonResponse({'message': 'The listing does not exist'}, status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        Serializer = TrailCompletionSerializer(TrailCompletionData, many=True)
+        return JsonResponse(Serializer.data, safe=False)
+
+
+@api_view(['PUT'])
+def TrailCompletionPut(request, pk):
+    if request.method == 'PUT':
+        OldCompletionData = TrailCompletion.objects.get(id=pk)
+        NewCompletionData = JSONParser().parse(request)
+        Serializer = TrailCompletionSerializer(
+            OldCompletionData, data=NewCompletionData)
+        if Serializer.is_valid():
+            Serializer.save()
+            return JsonResponse(Serializer.data)
+        return JsonResponse(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET', 'POST'])
+def register(request):
+    if request.method == 'GET':
+        Users = Account.objects.all()
+        Serializer = AccountSerializer(Users, many=True)
+        return JsonResponse(Serializer.data, safe=False)
+
+    elif request.method == 'POST':
+        UserID = JSONParser().parse(request)
+        Serializer = AccountSerializer(data=UserID)
+        if Serializer.is_valid():
+            Serializer.save()
+            return JsonResponse(Serializer.data, status=status.HTTP_201_CREATED)
+        return JsonResponse(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+def get(request, uid: str):
+    try:
+        User = Account.objects.filter(firebase_uid=uid)
+    except Account.DoesNotExist:
+        return JsonResponse({'message': 'The listing does not exist'}, status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        Serializer = AccountSerializer(User, many=True)
+        return JsonResponse(Serializer.data, safe=False)

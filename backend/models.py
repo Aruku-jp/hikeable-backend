@@ -1,6 +1,7 @@
 from django.db import models
 
 
+
 class Trail (models.Model):
     id = models.AutoField(primary_key=True)
     name = models.CharField(unique=True, null=False, max_length=255)
@@ -39,6 +40,18 @@ class TrailCompletion (models.Model):
     user = models.ForeignKey("Account", on_delete=models.CASCADE)
     trail_id = models.ForeignKey("Trail", on_delete=models.CASCADE)
     completion = models.BooleanField(null=False)
+    date = models.DateField(null=False)
+
+
+class TrailMessages (models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey("Account", on_delete=models.CASCADE)
+    latitude = models.DecimalField(null=False, max_digits=12, decimal_places=8)
+    longitude = models.DecimalField(
+        null=False, max_digits=13, decimal_places=8)
+    message = models.TextField(null=False)
+    likes = models.IntegerField(blank=True)
+    dislikes = models.IntegerField(blank=True)
     date = models.DateField(null=False)
 
 

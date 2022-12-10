@@ -341,10 +341,10 @@
     "pk": 25,
     "fields": {
       "name": "Mount Ponpon",
-      "prefecture": "saitama",
+      "prefecture": "kyoto",
       "latitude": 34.9352,
       "longitude": 135.6238,
-      "length": 12,
+      "length": 7,
       "difficulty": 1,
       "photo_url": "",
       "map_url": ""
@@ -597,6 +597,188 @@
       "latitude": 35.2059,
       "longitude": 137.1668,
       "length": 12,
+      "difficulty": 2,
+      "photo_url": "",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 44,
+    "fields": {
+      "name": "Chausuyama",
+      "prefecture": "aichi",
+      "latitude": 35.2276,
+      "longitude": 137.6554,
+      "length": 4,
+      "difficulty": 1,
+      "photo_url": "",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 45,
+    "fields": {
+      "name": "Mirokusan",
+      "prefecture": "aichi",
+      "latitude": 35.3145,
+      "longitude": 137.0653,
+      "length": 7,
+      "difficulty": 1,
+      "photo_url": "",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 46,
+    "fields": {
+      "name": "Mount Gozaisho",
+      "prefecture": "mie",
+      "latitude": 35.0204,
+      "longitude": 136.4188,
+      "length": 9,
+      "difficulty": 2,
+      "photo_url": "",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 47,
+    "fields": {
+      "name": "Mount Odaigahara",
+      "prefecture": "nara",
+      "latitude": 34.1853,
+      "longitude": 136.1092,
+      "length": 7,
+      "difficulty": 1,
+      "photo_url": "",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 48,
+    "fields": {
+      "name": "Mount Kuroso",
+      "prefecture": "mie",
+      "latitude": 34.5309,
+      "longitude": 136.1704,
+      "length": 13,
+      "difficulty": 1,
+      "photo_url": "",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 49,
+    "fields": {
+      "name": "Mount Atago",
+      "prefecture": "kyoto",
+      "latitude": 35.0616,
+      "longitude": 135.6323,
+      "length": 10,
+      "difficulty": 2,
+      "photo_url": "",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 50,
+    "fields": {
+      "name": "Mount Hiei",
+      "prefecture": "shiga",
+      "latitude": 35.0622,
+      "longitude": 135.8315,
+      "length": 12,
+      "difficulty": 2,
+      "photo_url": "",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 51,
+    "fields": {
+      "name": "Mount Ikoma",
+      "prefecture": "osaka",
+      "latitude": 34.6785,
+      "longitude": 135.679,
+      "length": 8,
+      "difficulty": 1,
+      "photo_url": "",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 52,
+    "fields": {
+      "name": "Mount Iwawaki",
+      "prefecture": "osaka",
+      "latitude": 34.3741,
+      "longitude": 135.5511,
+      "length": 11,
+      "difficulty": 2,
+      "photo_url": "",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 53,
+    "fields": {
+      "name": "Mount Myoken",
+      "prefecture": "osaka",
+      "latitude": 34.929,
+      "longitude": 135.4675,
+      "length": 8,
+      "difficulty": 1,
+      "photo_url": "",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 54,
+    "fields": {
+      "name": "Mount Yamato Katsuragi",
+      "prefecture": "osaka",
+      "latitude": 34.4562,
+      "longitude": 135.6824,
+      "length": 10,
+      "difficulty": 1,
+      "photo_url": "",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 55,
+    "fields": {
+      "name": "Mount Hyono",
+      "prefecture": "hyogo",
+      "latitude": 35.3539,
+      "longitude": 134.5139,
+      "length": 9,
+      "difficulty": 2,
+      "photo_url": "",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 56,
+    "fields": {
+      "name": "Mount Rokko",
+      "prefecture": "hyogo",
+      "latitude": 34.778,
+      "longitude": 135.2637,
+      "length": 13,
       "difficulty": 2,
       "photo_url": "",
       "map_url": ""

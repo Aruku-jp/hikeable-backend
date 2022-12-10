@@ -489,5 +489,117 @@
       "photo_url": "",
       "map_url": ""
     }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 36,
+    "fields": {
+      "name": "Mount Haku",
+      "prefecture": "ishikawa",
+      "latitude": 36.1663,
+      "longitude": 136.772,
+      "length": 15,
+      "difficulty": 3,
+      "photo_url": "",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 37,
+    "fields": {
+      "name": "Mount Hodatsu",
+      "prefecture": "ishikawa",
+      "latitude": 36.782,
+      "longitude": 136.8129,
+      "length": 12,
+      "difficulty": 1,
+      "photo_url": "",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 38,
+    "fields": {
+      "name": "Mount Kanmuri",
+      "prefecture": "fukui",
+      "latitude": 35.7802,
+      "longitude": 136.4095,
+      "length": 5,
+      "difficulty": 1,
+      "photo_url": "",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 39,
+    "fields": {
+      "name": "Mount Arashima",
+      "prefecture": "fukui",
+      "latitude": 35.9344,
+      "longitude": 136.6012,
+      "length": 11,
+      "difficulty": 2,
+      "photo_url": "",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 40,
+    "fields": {
+      "name": "Mount Akasaka",
+      "prefecture": "shiga",
+      "latitude": 35.5202,
+      "longitude": 136.0234,
+      "length": 7,
+      "difficulty": 1,
+      "photo_url": "",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 41,
+    "fields": {
+      "name": "Mount Mizugaki",
+      "prefecture": "yamanashi",
+      "latitude": 35.8935,
+      "longitude": 138.5921,
+      "length": 9,
+      "difficulty": 2,
+      "photo_url": "",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 42,
+    "fields": {
+      "name": "Mount Hongu",
+      "prefecture": "aichi",
+      "latitude": 34.9096,
+      "longitude": 137.4206,
+      "length": 9,
+      "difficulty": 2,
+      "photo_url": "",
+      "map_url": ""
+    }
+  },
+  {
+    "model": "backend.Trail",
+    "pk": 43,
+    "fields": {
+      "name": "Mount Sanage",
+      "prefecture": "aichi",
+      "latitude": 35.2059,
+      "longitude": 137.1668,
+      "length": 12,
+      "difficulty": 2,
+      "photo_url": "",
+      "map_url": ""
+    }
   }
 ]

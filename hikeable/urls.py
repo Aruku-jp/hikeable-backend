@@ -43,5 +43,7 @@ urlpatterns = [
          views.TrailCompletionPut, name='trailcompletion_put'),
     path('api/users', views.register, name='account_post'),
     path('api/users/<str:uid>', views.get, name='account_get'),
-    path('api/trails/messages', views.TrailMessageList, name='trailmessages_list')
+    path('api/trails/messages', views.TrailMessageList, name='trailmessage_list'),
+    path('api/trails/<int:pk>/messages', views.TrialMessageGet, name='trailmessage_get'),
+    path('api/trails/messages/<int:pk>', views.TrailMessagePut, name='trailmessage_put')
 ]

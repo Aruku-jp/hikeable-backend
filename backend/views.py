@@ -197,3 +197,44 @@ def get(request, uid: str):
     if request.method == 'GET':
         Serializer = AccountSerializer(User, many=True)
         return JsonResponse(Serializer.data, safe=False)
+
+
+@api_view(['GET', 'POST'])
+def TrailMessageList(request):
+    if request.method == 'GET':
+        TrailMessageData = TrailMessage.objects.all()
+        Serializer = TrailMessageSerializer(TrailMessageData, many=True)
+        return JsonResponse(Serializer.data, safe=False)
+
+    elif request.method == 'POST':
+        TrailMessageData = JSONParser().parse(request)
+        Serializer = TrailMessageSerializer(data=TrailMessageData)
+        if Serializer.is_valid():
+            Serializer.save()
+            return JsonResponse(Serializer.data, status=status.HTTP_201_CREATED)
+        return JsonResponse(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+def TrialMessageGet(request, pk):
+    try:
+        TrailMessageData = TrailMessage.objects.filter(trail_id=pk)
+    except TrailMessage.DoesNotExist:
+        return JsonResponse({'message': 'The listing does not exist'}, status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        Serializer = TrailMessageSerializer(TrailMessageData, many=True)
+        return JsonResponse(Serializer.data, safe=False)
+
+
+@api_view(['PUT'])
+def TrailMessagePut(request, pk):
+    if request.method == 'PUT':
+        OldMessageData = TrailMessage.objects.get(id=pk)
+        NewMessageData = JSONParser().parse(request)
+        Serializer = TrailMessageSerializer(
+            OldMessageData, data=NewMessageData)
+        if Serializer.is_valid():
+            Serializer.save()
+            return JsonResponse(Serializer.data)
+        return JsonResponse(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)

@@ -43,7 +43,7 @@ class TrailCompletion (models.Model):
     date = models.DateField(null=False)
 
 
-class TrailMessages (models.Model):
+class TrailMessage (models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey("Account", on_delete=models.CASCADE)
     trail_id = models.ForeignKey("Trail", on_delete=models.CASCADE)

@@ -28,7 +28,7 @@ SECRET_KEY=config('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG=config('DEBUG')
 
-ALLOWED_HOSTS = ['localhost', 'hikeable-backend.herokuapp.com', 'herokuapp.com']
+ALLOWED_HOSTS = ['localhost', 'hikeable-backend.herokuapp.com', 'herokuapp.com', '127.0.0.1']
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = ('http://localhost:3000', 'http://localhost:8000', 'https://hikeable-frontend.herokuapp.com', 'https://hikeable-frontend.vercel.app')
@@ -139,3 +139,8 @@ REST_FRAMEWORK = {
     'DEFAULT_PAGINATION_CLASS': 'rest_framework.pagination.PageNumberPagination',
     'PAGE_SIZE': 10
 }
+
+# Fixutures
+FIXTURE_DIRS = [
+    'traildata',
+]

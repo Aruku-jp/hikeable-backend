@@ -197,3 +197,19 @@ def get(request, uid: str):
     if request.method == 'GET':
         Serializer = AccountSerializer(User, many=True)
         return JsonResponse(Serializer.data, safe=False)
+
+
+@api_view(['GET', 'POST'])
+def TrailMessageList(request):
+    if request.method == 'GET':
+        TrailMessagenData = TrailMessage.objects.all()
+        Serializer = TrailMessageSerializer(TrailMessagenData, many=True)
+        return JsonResponse(Serializer.data, safe=False)
+
+    elif request.method == 'POST':
+        TrailMessagenData = JSONParser().parse(request)
+        Serializer = TrailMessageSerializer(data=TrailMessagenData)
+        if Serializer.is_valid():
+            Serializer.save()
+            return JsonResponse(Serializer.data, status=status.HTTP_201_CREATED)
+        return JsonResponse(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)

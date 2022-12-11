@@ -230,7 +230,7 @@ def TrialMessageGet(request, pk):
 @api_view(['PUT'])
 def TrailMessagePut(request, pk):
     if request.method == 'PUT':
-        OldMessageData = TrailCompletion.objects.get(id=pk)
+        OldMessageData = TrailMessage.objects.get(id=pk)
         NewMessageData = JSONParser().parse(request)
         Serializer = TrailMessageSerializer(
             OldMessageData, data=NewMessageData)

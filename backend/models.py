@@ -55,7 +55,7 @@ class TrailMessage (models.Model):
     dislikes = models.IntegerField(blank=True)
     date = models.DateField(null=False)
     
-class Badges (models.Model):
+class Badge (models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey("Account", on_delete=models.CASCADE)
     badges = models.CharField(max_length=2048, blank=True)

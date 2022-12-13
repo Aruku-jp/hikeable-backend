@@ -20,6 +20,12 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Group
         fields = ['url', 'name']
+        
+
+class BadgesSerializer(Badges.ModelSerializer):
+    class Meta:
+        model = TrailComment
+        fields = ['id', 'user', 'badge', 'date']
 
 
 class TrailSerializer(serializers.HyperlinkedModelSerializer):

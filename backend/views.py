@@ -242,7 +242,7 @@ def TrailMessagePut(request, pk):
 @api_view(['GET'])
 def UserBadgeList(request, pk):
     try: 
-        BadgesData = Badges.objects.filter(User=pk)
+        BadgesData = Badges.objects.filter(user=pk)
     except Badges.DoesNotExist:
         return JsonResponse({'message': 'This user has no badges'}, stastatus=status.HTTP_404_NOT_FOUNDtus)
     

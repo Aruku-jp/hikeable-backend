@@ -47,9 +47,9 @@ class TrailMessage (models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey("Account", on_delete=models.CASCADE)
     trail_id = models.ForeignKey("Trail", on_delete=models.CASCADE)
-    latitude = models.DecimalField(null=False, max_digits=12, decimal_places=8)
+    latitude = models.DecimalField(null=False, max_digits=18, decimal_places=15)
     longitude = models.DecimalField(
-        null=False, max_digits=13, decimal_places=8)
+        null=False, max_digits=18, decimal_places=15)
     message = models.TextField(null=False)
     likes = models.IntegerField(blank=True)
     dislikes = models.IntegerField(blank=True)

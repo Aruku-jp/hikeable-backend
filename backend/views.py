@@ -238,3 +238,26 @@ def TrailMessagePut(request, pk):
             Serializer.save()
             return JsonResponse(Serializer.data)
         return JsonResponse(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+@api_view(['GET', 'POST'])
+def UserBadgeList(request, pk):
+    try: 
+        BadgesData = Badge.objects.filter(user=pk)
+    except Badge.DoesNotExist:
+        return JsonResponse({'message': 'This user has no badges'}, stastatus=status.HTTP_404_NOT_FOUNDtus)
+    
+    if request.method == 'GET':
+        Serializer = BadgeSerializer(BadgesData, many=True)
+        return JsonResponse(Serializer.data, safe=False)
+    
+    elif request.method == 'POST':
+        NewBadge = JSONParser().parse(request)
+        Serializer = BadgeSerializer(data=NewBadge)
+        if Serializer.is_valid():
+            Serializer.save()
+            return JsonResponse(Serializer.data, status=status.HTTP_201_CREATED)
+        return JsonResponse(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+        
+        
+    
+    

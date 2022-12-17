@@ -1,11 +1,15 @@
+import json
 from django.contrib.auth.models import User, Group
+from django.shortcuts import HttpResponse
 from .models import *
 from backend.serializers import *
 
 from rest_framework import viewsets, permissions, status
+from rest_framework.response import Response
 from rest_framework.decorators import api_view
 
 from django.http.response import JsonResponse
+from django.core import serializers
 from rest_framework.parsers import JSONParser
 
 
@@ -244,7 +248,7 @@ def UserBadgeList(request, pk):
     try: 
         BadgesData = Badge.objects.filter(user=pk)
     except Badge.DoesNotExist:
-        return JsonResponse({'message': 'This user has no badges'}, stastatus=status.HTTP_404_NOT_FOUNDtus)
+        return JsonResponse({'message': 'This user has no badges'}, stastatus=status.HTTP_404_NOT_FOUND)
     
     if request.method == 'GET':
         Serializer = BadgeSerializer(BadgesData, many=True)
@@ -259,5 +263,53 @@ def UserBadgeList(request, pk):
         return JsonResponse(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)
         
         
+@api_view(['GET'])
+def UserTrailCompletionList(request, pk):
+    try:
+        UserCompletedTrails = TrailCompletion.objects.filter(user=pk).filter(completion=True)
+    except UserCompletedTrails.DoesNotExist:
+        return JsonResponse({'message': 'This User has no completed trails'}, stastatus=status.HTTP_404_NOT_FOUNDtus)
+        
+    Serializer = TrailCompletionSerializer(UserCompletedTrails, many=True)
+    return JsonResponse(Serializer.data, safe=False)
+
+
+@api_view(['GET'])
+def UserCompletionLengths(request, pk):
     
+    UserCompletedTrails = TrailCompletion.objects.filter(user=pk).filter(completion=True)
+    TrailData = Trail.objects.all()
+    
+    returnData = []
+    for obj in UserCompletedTrails:
+        trail_id = obj.trail_id.id
+        length = TrailData.filter(pk=trail_id)[0].length
+        returnData.append({
+                      'date' : obj.date,
+                      'length' : length,
+                      })
+        
+    serialized_objects = UserTrailLengthSerializer(returnData, many=True)
+
+    return JsonResponse(serialized_objects.data, safe=False)
+
+@api_view(['GET'])
+def UserMessages (request, pk):
+    UserMessageList = TrailMessage.objects.filter(user=pk).all()
+    
+    Serializer = TrailMessageSerializer(UserMessageList, many=True)
+    
+    return JsonResponse(Serializer.data, safe=False) 
+
+@api_view(['GET'])
+def UserTrailComments (request, pk):
+    UserCommentList = TrailComment.objects.filter(user=pk).all()
+    
+    Serializer = TrailCommentSerializer(UserCommentList, many=True)
+    
+    return JsonResponse(Serializer.data, safe=False)
+
+
+    
+
     

@@ -43,7 +43,6 @@ urlpatterns = [
          views.TrailCompletionPut, name='trailcompletion_put'),
     path('api/users', views.register, name='account_post'),
     path('api/users/<str:uid>', views.get, name='account_get'),
-    path('api/users/<str:uid>', views.get, name='account_get'),
     path('api/users/<int:pk>/badges', views.UserBadgeList, name='user_badges'),
     path('api/users/<int:pk>/completions', views.UserTrailCompletionList, name='user_completion_trails'),
     path('api/users/<int:pk>/completion-lengths', views.UserCompletionLengths, name='user_completion_lengths'),

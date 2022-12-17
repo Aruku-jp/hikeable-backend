@@ -49,8 +49,7 @@ urlpatterns = [
     path('api/users/<int:pk>/completion-lengths', views.UserCompletionLengths, name='user_completion_lengths'),
     path('api/users/<int:pk>/messages', views.UserMessages, name='user_messages'),
     path('api/users/<int:pk>/trail-comments', views.UserTrailComments, name='user_trail_comments'),
-    
     path('api/trails/messages', views.TrailMessageList, name='trailmessage_list'),
     path('api/trails/<int:pk>/messages', views.TrailMessageGet, name='trailmessage_get'),
-    path('api/trails/messages/<int:pk>', views.TrailMessagePut, name='trailmessage_put')
+    path('api/trails/messages/likes', views.TrailMessageLikeList, name='trailmessagelike_list'),
 ]

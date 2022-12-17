@@ -1,5 +1,5 @@
 from django.db import models
-from django.core.validators import MinValueValidator, MaxValueValidator
+from django.core.validators import MaxValueValidator, MinValueValidator
 
 
 class Trail (models.Model):
@@ -52,8 +52,17 @@ class TrailMessage (models.Model):
     longitude = models.DecimalField(
         null=False, max_digits=18, decimal_places=15)
     message = models.TextField(null=False)
-    likes = models.ManyToOneRel(blank=True)
     date = models.DateField(null=False)
+
+
+class TrailMessageLike (models.Model):
+    id = models.AutoField(primary_key=True)
+    user = models.ForeignKey("Account", on_delete=models.CASCADE)
+    message_id = models.ForeignKey("TrailMessage", on_delete=models.CASCADE)
+    value = models.IntegerField(default=1, validators=[
+                                MinValueValidator(0), MaxValueValidator(1)])
+    create_date = models.DateField(null=False)
+    update_date = models.DateField(null=True)
 
 
 class Badge (models.Model):
@@ -62,20 +71,7 @@ class Badge (models.Model):
     badges = models.CharField(max_length=2048, blank=True)
     date = models.DateField(null=False)
 
+
 class TrailCompletionLength (models.Model):
     date = models.DateField(null=False)
     length = models.IntegerField(null=False)
-    
-
-class TrailMessageLike (models.Model):
-    id = models.AutoField(primary_key=True)
-    message_id = models.ForeignKey("TrailMessage", on_delete=models.CASCADE)
-    user = models.ForeignKey("Account", on_delete=models.CASCADE)
-    value = models.IntegerField(
-        validators=[MinValueValidator(-1), MaxValueValidator(1)])
-    created_at = models.DateField(null=False)
-    updated_at = models.DateField(null=True)
-
-
-def __str__(self):
-    return self.user.username

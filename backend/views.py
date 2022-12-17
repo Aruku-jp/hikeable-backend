@@ -220,7 +220,7 @@ def TrailMessageList(request):
 
 
 @api_view(['GET'])
-def TrialMessageGet(request, pk):
+def TrailMessageGet(request, pk):
     try:
         TrailMessageData = TrailMessage.objects.filter(trail_id=pk)
     except TrailMessage.DoesNotExist:

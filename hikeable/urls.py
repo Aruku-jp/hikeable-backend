@@ -51,6 +51,6 @@ urlpatterns = [
     path('api/users/<int:pk>/trail-comments', views.UserTrailComments, name='user_trail_comments'),
     
     path('api/trails/messages', views.TrailMessageList, name='trailmessage_list'),
-    path('api/trails/<int:pk>/messages', views.TrialMessageGet, name='trailmessage_get'),
+    path('api/trails/<int:pk>/messages', views.TrailMessageGet, name='trailmessage_get'),
     path('api/trails/messages/<int:pk>', views.TrailMessagePut, name='trailmessage_put')
 ]

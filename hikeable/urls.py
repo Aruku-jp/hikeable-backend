@@ -45,6 +45,9 @@ urlpatterns = [
     path('api/users/<str:uid>', views.get, name='account_get'),
     path('api/users/<str:uid>', views.get, name='account_get'),
     path('api/users/<int:pk>/badges', views.UserBadgeList, name='user_badges'),
+    path('api/users/<int:pk>/completions', views.UserTrailCompletionList, name='user_completion_trails'),
+    path('api/users/<int:pk>/completion_lengths', views.UserCompletionLengths, name='user_completion_lengths'),
+    
     path('api/trails/messages', views.TrailMessageList, name='trailmessage_list'),
     path('api/trails/<int:pk>/messages', views.TrialMessageGet, name='trailmessage_get'),
     path('api/trails/messages/<int:pk>', views.TrailMessagePut, name='trailmessage_put')

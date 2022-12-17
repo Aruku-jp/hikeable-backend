@@ -61,5 +61,9 @@ class Badge (models.Model):
     badges = models.CharField(max_length=2048, blank=True)
     date = models.DateField(null=False)
     
+class TrailCompletionLengths (models.Model):
+    date = models.DateField(null=False)
+    length = models.IntegerField(null=False)
+    
 def __str__(self):
     return self.user.username

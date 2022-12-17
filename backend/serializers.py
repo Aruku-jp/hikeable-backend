@@ -62,5 +62,5 @@ class TrailMessageSerializer(ModelSerializer):
 
 class UserTrailLengthSerializer(ModelSerializer):
     class Meta:
-        model = TrailCompletionLengths
+        model = TrailCompletionLength
         fields = ['date', 'length']  

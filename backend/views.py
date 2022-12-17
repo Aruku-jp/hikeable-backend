@@ -306,7 +306,8 @@ def UserTrailComments(request, pk):
 def TrailMessageLikeList(request):
     if request.method == 'GET':
         TrailMessageLikeData = TrailMessageLike.objects.all()
-        Serializer = TrailMessageLikeSerializer(TrailMessageLikeData, many=True)
+        Serializer = TrailMessageLikeSerializer(
+            TrailMessageLikeData, many=True)
         return JsonResponse(Serializer.data, safe=False)
 
     elif request.method == 'POST':
@@ -315,4 +316,29 @@ def TrailMessageLikeList(request):
         if Serializer.is_valid():
             Serializer.save()
             return JsonResponse(Serializer.data, status=status.HTTP_201_CREATED)
+        return JsonResponse(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+
+
+@api_view(['GET'])
+def TrailMessageLikeGet(request, pk):
+    try:
+        TrailMessageLikeData = TrailMessageLike.objects.filter(message_id=pk)
+    except TrailMessageLike.DoesNotExist:
+        return JsonResponse({'message': 'The listing does not exist'}, status=status.HTTP_404_NOT_FOUND)
+
+    if request.method == 'GET':
+        Serializer = TrailMessageLikeSerializer(TrailMessageLikeData, many=True)
+        return JsonResponse(Serializer.data, safe=False)
+
+
+@api_view(['PUT'])
+def TrailMessageLikePut(request, pk):
+    if request.method == 'PUT':
+        OldLikeData = TrailMessageLike.objects.get(id=pk)
+        NewLikeData = JSONParser().parse(request)
+        Serializer = TrailMessageLikeSerializer(
+            OldLikeData, data=NewLikeData)
+        if Serializer.is_valid():
+            Serializer.save()
+            return JsonResponse(Serializer.data)
         return JsonResponse(Serializer.errors, status=status.HTTP_400_BAD_REQUEST)

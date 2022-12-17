@@ -51,4 +51,6 @@ urlpatterns = [
     path('api/trails/messages', views.TrailMessageList, name='trailmessage_list'),
     path('api/trails/<int:pk>/messages', views.TrailMessageGet, name='trailmessage_get'),
     path('api/trails/messages/likes', views.TrailMessageLikeList, name='trailmessagelike_list'),
+    path('api/trails/messages/<int:pk>/likes', views.TrailMessageLikeGet, name='trailmessagelike_get'),
+    path('api/trails/messages/likes/<int:pk>', views.TrailMessageLikePut, name='trailmessagelike_put')
 ]

@@ -57,7 +57,7 @@ class TrailMessageSerializer(ModelSerializer):
     class Meta:
         model = TrailMessage
         fields = ['id', 'user', 'trail_id', 'latitude',
-                  'longitude', 'message', 'likes', 'date']
+                  'longitude', 'message', 'date']
 
 
 class UserTrailLengthSerializer(ModelSerializer):

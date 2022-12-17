@@ -277,7 +277,6 @@ def UserTrailCompletionList(request, pk):
 @api_view(['GET'])
 def UserCompletionLengths(request, pk):
     
-    
     UserCompletedTrails = TrailCompletion.objects.filter(user=pk).filter(completion=True)
     TrailData = Trail.objects.all()
     
@@ -293,5 +292,24 @@ def UserCompletionLengths(request, pk):
     serialized_objects = UserTrailLengthSerializer(returnData, many=True)
 
     return JsonResponse(serialized_objects.data, safe=False)
+
+@api_view(['GET'])
+def UserMessages (request, pk):
+    UserMessageList = TrailMessage.objects.filter(user=pk).all()
+    
+    Serializer = TrailMessageSerializer(UserMessageList, many=True)
+    
+    return JsonResponse(Serializer.data, safe=False) 
+
+@api_view(['GET'])
+def UserTrailComments (request, pk):
+    UserCommentList = TrailComment.objects.filter(user=pk).all()
+    
+    Serializer = TrailCommentSerializer(UserCommentList, many=True)
+    
+    return JsonResponse(Serializer.data, safe=False)
+
+
+    
 
     

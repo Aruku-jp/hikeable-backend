@@ -43,14 +43,14 @@ urlpatterns = [
          views.TrailCompletionPut, name='trailcompletion_put'),
     path('api/users', views.register, name='account_post'),
     path('api/users/<str:uid>', views.get, name='account_get'),
-    path('api/users/<str:uid>', views.get, name='account_get'),
     path('api/users/<int:pk>/badges', views.UserBadgeList, name='user_badges'),
     path('api/users/<int:pk>/completions', views.UserTrailCompletionList, name='user_completion_trails'),
     path('api/users/<int:pk>/completion-lengths', views.UserCompletionLengths, name='user_completion_lengths'),
     path('api/users/<int:pk>/messages', views.UserMessages, name='user_messages'),
     path('api/users/<int:pk>/trail-comments', views.UserTrailComments, name='user_trail_comments'),
-    
     path('api/trails/messages', views.TrailMessageList, name='trailmessage_list'),
-    path('api/trails/<int:pk>/messages', views.TrialMessageGet, name='trailmessage_get'),
-    path('api/trails/messages/<int:pk>', views.TrailMessagePut, name='trailmessage_put')
+    path('api/trails/<int:pk>/messages', views.TrailMessageGet, name='trailmessage_get'),
+    path('api/trails/messages/likes', views.TrailMessageLikeList, name='trailmessagelike_list'),
+    path('api/trails/messages/<int:pk>/likes', views.TrailMessageLikeGet, name='trailmessagelike_get'),
+    path('api/trails/messages/likes/<int:pk>', views.TrailMessageLikePut, name='trailmessagelike_put')
 ]

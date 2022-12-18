@@ -20,7 +20,7 @@ class GroupSerializer(serializers.HyperlinkedModelSerializer):
     class Meta:
         model = Group
         fields = ['url', 'name']
-        
+
 
 class BadgeSerializer(ModelSerializer):
     class Meta:
@@ -38,7 +38,7 @@ class TrailSerializer(serializers.HyperlinkedModelSerializer):
 class TrailCommentSerializer(ModelSerializer):
     class Meta:
         model = TrailComment
-        fields = ['id', 'user', 'trail_id', 'comment', 'date']
+        fields = ['id', 'user', 'userName', 'trail_id', 'comment', 'date']
 
 
 class TrailLikeSerializer(ModelSerializer):
@@ -63,9 +63,11 @@ class TrailMessageSerializer(ModelSerializer):
 class UserTrailLengthSerializer(ModelSerializer):
     class Meta:
         model = TrailCompletionLength
-        fields = ['date', 'length']  
+        fields = ['date', 'length']
+
 
 class TrailMessageLikeSerializer(ModelSerializer):
     class Meta:
         model = TrailMessageLike
-        fields = ['id', 'user', 'message_id', 'value', 'create_date', 'update_date']
+        fields = ['id', 'user', 'message_id',
+                  'value', 'create_date', 'update_date']

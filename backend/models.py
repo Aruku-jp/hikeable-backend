@@ -18,6 +18,7 @@ class Trail (models.Model):
 class TrailComment (models.Model):
     id = models.AutoField(primary_key=True)
     user = models.ForeignKey("Account", on_delete=models.CASCADE)
+    userName = models.CharField(max_length=128, null=True)
     trail_id = models.ForeignKey("Trail", on_delete=models.CASCADE)
     comment = models.TextField(max_length=10000, blank=False)
     date = models.DateField(null=False)

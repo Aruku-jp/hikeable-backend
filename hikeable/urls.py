@@ -53,5 +53,5 @@ urlpatterns = [
     path('api/trails/messages/likes', views.TrailMessageLikeList, name='trailmessagelike_list'),
     path('api/trails/messages/<int:pk>/likes', views.TrailMessageLikeGet, name='trailmessagelike_get'),
     path('api/trails/messages/likes/<int:pk>', views.TrailMessageLikePut, name='trailmessagelike_put'),
-    path('api/feedback', views.Feedback, name='feedback_post')
+    path('api/feedback', views.FeedbackPost, name='feedback_post')
 ]

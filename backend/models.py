@@ -80,5 +80,5 @@ class TrailCompletionLength (models.Model):
 class Feedback (models.Model):
     id = models.AutoField(primary_key=True)
     from_name = models.CharField(blank=False, max_length=255)
-    from_email = models.EmailField(blank=False, max_length=254)
+    from_email = models.CharField(blank=False, max_length=254)
     message = models.TextField(blank=False, max_length=10000)

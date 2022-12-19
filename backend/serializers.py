@@ -76,4 +76,4 @@ class TrailMessageLikeSerializer(ModelSerializer):
 class FeedbackSerializer(ModelSerializer):
     class Meta:
         model = Feedback
-        fields = ['id', 'from_user', 'from_email', 'message']
+        fields = ['id', 'from_name', 'from_email', 'message']

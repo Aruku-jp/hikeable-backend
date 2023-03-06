@@ -1,5 +1,7 @@
 # Hikeable Backend Server
 
+![Hikeable Banner](https://res.cloudinary.com/dsnm2ssxl/image/upload/q_auto,f_auto/w_1280,h_640,c_crop/v1678065887/Hikeable_Backend_-_GitHub_Banner_xfsn6u.png)
+
 This is the **Hikeable** backend server built using Django, a popular Python web framework. The server provides RESTful APIs that can be used by client applications to interact with the server.
 
 ## What is Hikeable?

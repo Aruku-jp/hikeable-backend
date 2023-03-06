@@ -28,11 +28,11 @@ SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS').split(' ')
+ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS', 'localhost').split(',')
 
 CORS_ORIGIN_ALLOW_ALL = False
 CORS_ORIGIN_WHITELIST = os.environ.get(
-    'DJANGO_CORS_ORIGIN_WHITELIST').split(' ')
+    'DJANGO_CORS_ORIGIN_WHITELIST', 'https://localhost:3000').split(',')
 
 # Application definition
 

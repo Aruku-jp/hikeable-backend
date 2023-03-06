@@ -23,17 +23,16 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/4.1/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = config('SECRET_KEY')
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = os.environ.get('DJANGO_DEBUG', '') != 'False'
 
-ALLOWED_HOSTS = ['localhost', 'hikeable-backend.herokuapp.com',
-                 'herokuapp.com', '127.0.0.1']
+ALLOWED_HOSTS = os.environ.get('DJANGO_ALLOWED_HOSTS').split(' ')
 
 CORS_ORIGIN_ALLOW_ALL = False
-CORS_ORIGIN_WHITELIST = ('http://localhost:3000', 'http://localhost:8000', 'https://hikeable.netlify.app',
-                         'https://hikeable.site', 'https://www.hikeable.site')
+CORS_ORIGIN_WHITELIST = os.environ.get(
+    'DJANGO_CORS_ORIGIN_WHITELIST').split(' ')
 
 # Application definition
 

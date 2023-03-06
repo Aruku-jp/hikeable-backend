@@ -14,8 +14,11 @@ To get started with this project, follow these steps:
 1. Clone the repository to your local machine.
 2. Install the required dependencies using pip. You can find the required dependencies in the `requirements.txt` file.
 3. Set up a local database using PostgreSQL or any other database of your choice.
-4. Run database migrations to create the necessary tables and columns.
-5. Start the Django development server using the following command:
+4. Run database migrations to create the necessary tables and columns using the following command:
+`python manage.py migrate`
+5. Seed the database with the necessary basic data for the app to function properly using the following command:
+`python manage.py seed`
+6. Start the Django development server using the following command:
 `python manage.py runserver`
 
 You should now be able to access the server at `http://localhost:8000/`.
@@ -48,4 +51,4 @@ You can use any API client, such as `Postman`, to interact with these APIs.
 If you'd like to contribute to this project, please fork the repository and create a pull request with your changes.
 
 ## License
-This project is licensed under the MIT License. See the LICENSE file for details.
+This project is licensed under the MIT License. See the `LICENSE.md` file for details.
